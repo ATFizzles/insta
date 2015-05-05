@@ -6,16 +6,21 @@ session_start();
 
 //Make constants using define
 //basically constants
-define('client_id', 'cce4674a5fa04a9e80f41f598e8ff71d');
-define('client_secret', '9d46a69b815945db83e101b3f477108a');
+define('client_ID', 'cce4674a5fa04a9e80f41f598e8ff71d');
+define('client_Secret', '9d46a69b815945db83e101b3f477108a');
 define('redirectURI', 'http://localhostlearninginsta1238/index.php');
 define('ImageDirectory', 'pics/');
 ?>
 
-
-
-
-<!--CLIENT ID	cce4674a5fa04a9e80f41f598e8ff71d
-CLIENT SECRET	9d46a69b815945db83e101b3f477108a
-WEBSITE URL	http://localhostlearninginsta1238/index.php
-REDIRECT URI	http://localhostlearninginsta1238/index.php-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!-- Creating a login for people to go and give approval for our web app to access their Instagram Account
+		After getting approval we are now going to have the info so that we can play with it
+	 -->
+	<a href="https:api.instagram/oauth/authorize/?client_id=<?php  echo client_ID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
+</body>
+</html>
