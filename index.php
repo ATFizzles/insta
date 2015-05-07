@@ -17,11 +17,11 @@ if (isset($_GET['code'])){
 	$code = ($_GET['code']);
 	$url = 'https://api.instagram.com/oauth/access_token';
 	//setting up array that will access tokens
-	$access_token_settings = array('client_id' == clientID, 
-									'client_secret' == clientSecret,
-									'grant_type' == 'authorization_code',
-									'redirect_uri' == redirectURI,
-									'code' == $code
+	$access_token_settings = array('client_id' => clientID, 
+									'client_secret' => clientSecret,
+									'grant_type' => 'authorization_code',
+									'redirect_uri' => redirectURI,
+									'code' => $code
 									);
 //cURL is what we use in php, it's a library that calls to other API's.
 //setting a curl session and we put in $url bc thats where we are getting the data from.
@@ -33,11 +33,15 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $access_token_settings);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 //but in live work-production we want to set this to true.
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-}
+
 
 $result = curl_exec($curl);
-curl_close();
+curl_close($curl);
 
+$results = json_decode($result, true);
+echo $results['user']['username'];
+}
+else{
 ?>
 
 <!DOCTYPE html>
@@ -52,3 +56,6 @@ curl_close();
 	<a href="https:api.instagram.com/oauth/authorize/?client_id=<?php  echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
 </body>
 </html>
+<?php
+}
+?>
