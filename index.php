@@ -12,7 +12,7 @@ define('redirectURI', 'http://localhost/learninginsta1238/index.php');
 define('ImageDirectory', 'pics/');
 
 //if website gets the 'code'...
-if isset(($_GET['code'])){
+if (isset($_GET['code'])){
 	//sets up code and url variables
 	$code = ($_GET['code']);
 	$url = 'https://api.instagram.com/oauth/access_token';
