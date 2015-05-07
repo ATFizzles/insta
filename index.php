@@ -11,6 +11,22 @@ define('clientSecret', '9d46a69b815945db83e101b3f477108a');
 define('redirectURI', 'http://localhost/learninginsta1238/index.php');
 define('ImageDirectory', 'pics/');
 
+
+//function thats gonna connect to instagram
+function connectToInstagram($url){
+	$ch = curl_init();
+
+	curl_setopt_array($ch, array{
+		CURLOPT_URL => $url,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_SSL_VERIFYPEER => false,
+		CURLOPT_SSL_VERIFYHOST => 2,
+	});
+	$result = curl_exec($ch);
+	curl_close($ch);
+	return result;
+}
+
 //if website gets the 'code'...
 if (isset($_GET['code'])){
 	//sets up code and url variables
