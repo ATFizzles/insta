@@ -10,6 +10,21 @@ define('clientID', 'cce4674a5fa04a9e80f41f598e8ff71d');
 define('clientSecret', '9d46a69b815945db83e101b3f477108a');
 define('redirectURI', 'http://localhost/learninginsta1238/index.php');
 define('ImageDirectory', 'pics/');
+
+//if website gets the 'code'...
+if isset(($_GET['code'])){
+	//sets up code and url variables
+	$code = ($_GET['code']);
+	$url = 'https://api.instagram.com/oauth/access_token';
+	//setting up array that will access tokens
+	$access_token_settings = array('client_id' == clientID, 
+									'client_secret' == clientSecret,
+									'grant_type' == 'authorization_code',
+									'redirect_uri' == redirectURI,
+									'code' == $code
+									);
+}
+
 ?>
 
 <!DOCTYPE html>
