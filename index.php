@@ -24,24 +24,24 @@ function connectToInstagram($url){
 	));
 	$result = curl_exec($ch);
 	curl_close($ch);
-	return result;
+	return $result;
 }
 
 //Function to get userID cause userName doesn't allow us to get pictures
 function getUserID($userName){
-	$url = 'https://api.instagram.com/vl/users/search?q='.$userName.'&client_id='.clientID;
+	$url = 'https://api.instagram.com/v1/users/search?q='. $userName .'&client_id='.clientID;
 	$instagramInfo = connectToInstagram($url);
-	$result =json_decode($instagramInfo, true);
+	$results =json_decode($instagramInfo, true);
 
-	echo $results['data']['0']['id'];
+	return $results['data']['0']['id'];
 
 }
 
 //function to print out images onto screen
-function printImages(){
-	$url = 'https://api.instagram.com/vl/users/'.$userID.'/media/recent?client_id='.clientID.'&count=5';
+function printImages($userID, $accessToken){
+	$url = 'https://api.instagram.com/v1/users/'. $userID .'/media/recent?access_token='.$accessToken.'&count=5';
 	$instagramInfo = connectToInstagram($url);
-	$result =json_decode($instagramInfo, true);
+	$results =json_decode($instagramInfo, true);
 	//parse through the info one by one
 	foreach ($results['data'] as $items){
 		$image_url = $items['images']['low_resolution']['url']; //going to go thru results and give back url of pics bc we want to save it in php server
@@ -83,7 +83,7 @@ $userName = $results['user']['username'];
 
 $userID = getUserID($userName);
 
-printImages($userID);
+printImages($userID, $results['access_token']);
 }
 else{
 ?>
@@ -97,7 +97,7 @@ else{
 	<!-- Creating a login for people to go and give approval for our web app to access their Instagram Account
 		After getting approval we are now going to have the info so that we can play with it
 	 -->
-	<a href="https:api.instagram.com/oauth/authorize/?client_id=<?php  echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
+	<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php  echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
 </body>
 </html>
 <?php
