@@ -55,11 +55,10 @@ function printImages($userID, $accessToken){
 
 //function to save image to server
 function savePictures($image_url){
-		echo $image_url . '<br>'; 
 		//filename is what we are storing
 		//basename is the PHP built in method that we are using to store $image_url
 		$filename = basename($image_url);
-		echo "<button> $filename </button>". '<br>';
+		echo "<form action='$image_url'> <input type='submit' value='Fullscreen'></form>". '<br>';
 		//making sure image doesnt exist in storage
 		$destination = ImageDirectory . $filename;
 		//grabs image file and stores it in server
