@@ -28,8 +28,8 @@ function connectToInstagram($url){
 }
 
 //Function to get userID cause userName doesn't allow us to get pictures
-function getUserID($userName){
-	$url = 'https://api.instagram.com/v1/users/search?q='. $userName .'&client_id='.clientID;
+function getUserID(){
+	$url = 'https://api.instagram.com/v1/users/search?q='. deeznutz8214 .'&client_id='.clientID;
 	$instagramInfo = connectToInstagram($url);
 	$results =json_decode($instagramInfo, true);
 
@@ -39,7 +39,7 @@ function getUserID($userName){
 
 //function to print out images onto screen
 function printImages($userID, $accessToken){
-	$url = 'https://api.instagram.com/v1/users/'. $userID .'/media/recent?access_token='.$accessToken.'&count=5';
+	$url = 'https://api.instagram.com/v1/users/'. $userID .'/media/recent?access_token='.$accessToken.'&count=7';
 	$instagramInfo = connectToInstagram($url);
 	$results =json_decode($instagramInfo, true);
 	require_once(__DIR__ . "/view/header.php");
@@ -58,7 +58,7 @@ function savePictures($image_url){
 		//filename is what we are storing
 		//basename is the PHP built in method that we are using to store $image_url
 		$filename = basename($image_url);
-		echo "<form action='$image_url'> <input type='submit' value='Fullscreen'></form>". '<br>';
+		echo "<form class='full' action='$image_url'> <input type='submit' value='Fullscreen'></form>". '<br>';
 		//making sure image doesnt exist in storage
 		$destination = ImageDirectory . $filename;
 		//grabs image file and stores it in server

@@ -16,7 +16,7 @@ body{
 }
 
 #pics{
-	margin-left: 40%;
+	margin-left: 39%;
 	margin-top: 5%;
 }
 
@@ -30,13 +30,24 @@ h1{
 	margin-left: 96%;
 }
 
+.full{
+	margin-left: 47%;
+	margin-top: 2%;
+}
+
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
 
-	#pics{
-		margin-left: 7%;
+	body{
+		width: 80%;
 	}
 
+	#pics{
+		margin-left: 9%;
+	}
 
+	.full{
+		margin-left: 50%;
+	}
 
 
 
