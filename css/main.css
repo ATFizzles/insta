@@ -1,0 +1,43 @@
+body{
+	background-image: url('../images/back.jpg');
+	background-position:center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+#login{
+	text-decoration: none;
+	margin-left: 30%;
+	margin-top: 30%;	
+}
+
+#pics{
+	margin-left: 40%;
+	margin-top: 5%;
+}
+
+h1{
+	color: gray;
+	text-align: center;
+	font-size: 100px;
+}
+
+#logout{
+	margin-left: 96%;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+	#pics{
+		margin-left: 7%;
+	}
+
+
+
+
+
+}

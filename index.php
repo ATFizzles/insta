@@ -42,22 +42,24 @@ function printImages($userID, $accessToken){
 	$url = 'https://api.instagram.com/v1/users/'. $userID .'/media/recent?access_token='.$accessToken.'&count=5';
 	$instagramInfo = connectToInstagram($url);
 	$results =json_decode($instagramInfo, true);
+	require_once(__DIR__ . "/view/header.php");
 	//parse through the info one by one
 	foreach ($results['data'] as $items){
 		$image_url = $items['images']['low_resolution']['url']; //going to go thru results and give back url of pics bc we want to save it in php server
-		echo '<img src=" '.$image_url.' "/><br/>';
+		echo '<img id="pics" src=" '.$image_url.' "/><br/>';
 		//calling function to save $image_url
 		savePictures($image_url);
 	}
+	require_once(__DIR__ . "../view/footer.php");
 }
 
 //function to save image to server
 function savePictures($image_url){
-		echo $image_url	.'<br>'; 
+		echo $image_url . '<br>'; 
 		//filename is what we are storing
 		//basename is the PHP built in method that we are using to store $image_url
 		$filename = basename($image_url);
-		echo $filename . '<br>';
+		echo "<button> $filename </button>". '<br>';
 		//making sure image doesnt exist in storage
 		$destination = ImageDirectory . $filename;
 		//grabs image file and stores it in server
@@ -106,13 +108,21 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+		<title>Learning Api</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 	<!-- Creating a login for people to go and give approval for our web app to access their Instagram Account
 		After getting approval we are now going to have the info so that we can play with it
 	 -->
-	<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php  echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
+	<a id="login" href="https://api.instagram.com/oauth/authorize/?client_id=<?php  echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">Login to your Instagram</a>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
 <?php
