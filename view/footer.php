@@ -1,7 +1,7 @@
+	
 	<form id="logout" action="http://localhost/learninginsta1238/index.php">
     	<input type="submit" value="Logout">
 	</form>
-
 
 
 

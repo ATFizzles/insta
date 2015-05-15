@@ -111,7 +111,7 @@ else{
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 		<title>Learning Api</title>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -119,7 +119,19 @@ else{
 	<!-- Creating a login for people to go and give approval for our web app to access their Instagram Account
 		After getting approval we are now going to have the info so that we can play with it
 	 -->
-	<a id="login" href="https://api.instagram.com/oauth/authorize/?client_id=<?php  echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">Login to your Instagram</a>
+
+
+	 	<img id="logo" src="images/iglogo.png">
+
+	 	<div style="text-align:center; margin-top:5em;">
+  
+    		<a id="but" class="btn-instagram" href="https://api.instagram.com/oauth/authorize/?client_id=<?php  echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">
+      				<b>Sign in</b> with Instagram
+  			</a>
+  
+		</div>
+
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
